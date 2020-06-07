@@ -1,5 +1,7 @@
 package com.compilednotes.blogsite.entities;
 
+import org.hibernate.annotations.Columns;
+
 import javax.persistence.*;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.compilednotes.blogsite.controllers;
+package com.compilednotes.blogsite.controllers.rest;
 
 import com.compilednotes.blogsite.beans.ContentBean;
 import com.compilednotes.blogsite.payload.ContentPayload;

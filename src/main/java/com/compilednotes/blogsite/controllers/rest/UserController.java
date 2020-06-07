@@ -1,4 +1,4 @@
-package com.compilednotes.blogsite.controllers;
+package com.compilednotes.blogsite.controllers.rest;
 
 import org.springframework.web.bind.annotation.RestController;
 
