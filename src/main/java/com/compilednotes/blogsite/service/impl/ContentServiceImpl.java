@@ -4,6 +4,7 @@ import com.compilednotes.blogsite.beans.ContentBean;
 import com.compilednotes.blogsite.entities.ContentEntity;
 import com.compilednotes.blogsite.repository.ContentRepository;
 import com.compilednotes.blogsite.service.ContentService;
+import com.compilednotes.blogsite.utils.DozerBeanSingleton;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,7 @@ public class ContentServiceImpl implements ContentService {
     @Autowired
     private ContentRepository contentRepository;
 
-    private DozerBeanMapper mapper = new DozerBeanMapper();
+    private DozerBeanMapper mapper = DozerBeanSingleton.getInstance();
 
     @Override
     public void save(ContentBean contentBean) {

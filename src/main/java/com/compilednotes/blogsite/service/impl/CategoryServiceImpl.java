@@ -4,6 +4,7 @@ import com.compilednotes.blogsite.beans.CategoryBean;
 import com.compilednotes.blogsite.entities.CategoryEntity;
 import com.compilednotes.blogsite.repository.CategoryRepository;
 import com.compilednotes.blogsite.service.CategoryService;
+import com.compilednotes.blogsite.utils.DozerBeanSingleton;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Autowired
     private CategoryRepository categoryRepository;
 
-    private DozerBeanMapper mapper = new DozerBeanMapper();
+    private DozerBeanMapper mapper = DozerBeanSingleton.getInstance();
 
     /**
      * TODO : Need to make dozer mapping generic

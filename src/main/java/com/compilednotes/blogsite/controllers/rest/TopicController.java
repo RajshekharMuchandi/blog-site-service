@@ -3,6 +3,7 @@ package com.compilednotes.blogsite.controllers.rest;
 import com.compilednotes.blogsite.beans.TopicBean;
 import com.compilednotes.blogsite.payload.TopicPayload;
 import com.compilednotes.blogsite.service.TopicService;
+import com.compilednotes.blogsite.utils.DozerBeanSingleton;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -21,7 +22,7 @@ public class TopicController {
         @Autowired
         private TopicService topicService;
 
-        private DozerBeanMapper mapper = new DozerBeanMapper();
+        private DozerBeanMapper mapper = DozerBeanSingleton.getInstance();
 
         @PostMapping("/")
         public ResponseEntity<Void> createTopic(@RequestBody TopicBean topicBean, UriComponentsBuilder builder) {

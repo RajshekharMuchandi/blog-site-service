@@ -3,6 +3,7 @@ package com.compilednotes.blogsite.controllers.rest;
 import com.compilednotes.blogsite.beans.CategoryBean;
 import com.compilednotes.blogsite.payload.CategoryPayload;
 import com.compilednotes.blogsite.service.CategoryService;
+import com.compilednotes.blogsite.utils.DozerBeanSingleton;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -21,7 +22,7 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-    private DozerBeanMapper mapper = new DozerBeanMapper();
+    private DozerBeanMapper mapper = DozerBeanSingleton.getInstance();
 
     @PostMapping("/")
     public ResponseEntity<Void> createCategory(@RequestBody CategoryBean categoryBean, UriComponentsBuilder builder) {

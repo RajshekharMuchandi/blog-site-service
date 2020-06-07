@@ -5,6 +5,7 @@ import com.compilednotes.blogsite.beans.TopicBean;
 import com.compilednotes.blogsite.entities.TopicEntity;
 import com.compilednotes.blogsite.repository.TopicRepository;
 import com.compilednotes.blogsite.service.TopicService;
+import com.compilednotes.blogsite.utils.DozerBeanSingleton;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,7 @@ public class TopicServiceImpl implements TopicService {
     @Autowired
     private TopicRepository topicRepository;
 
-    private DozerBeanMapper mapper = new DozerBeanMapper();
+    private DozerBeanMapper mapper = DozerBeanSingleton.getInstance();
     
     @Override
     public void save(TopicBean topicBean) {
