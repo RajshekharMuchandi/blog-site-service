@@ -16,7 +16,7 @@ public class CategoryEntity {
     @Column( name = "CATEGORY_ID")
     private Long categoryId;
 
-    @Column( name = "CATEGORY_NAME")
+    @Column( name = "CATEGORY_NAME" , nullable = true)
     private String categoryName;
 
     @OneToMany(mappedBy = "categoryEntity")
@@ -44,5 +44,14 @@ public class CategoryEntity {
 
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
+    }
+
+    @Override
+    public String toString() {
+        return "CategoryEntity{" +
+                "categoryId=" + categoryId +
+                ", categoryName='" + categoryName + '\'' +
+                ", topicEntityList=" + topicEntityList +
+                '}';
     }
 }

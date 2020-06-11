@@ -53,4 +53,14 @@ public class ContentEntity {
     public void setReferences(String references) {
         this.references = references;
     }
+
+    @Override
+    public String toString() {
+        return "ContentEntity{" +
+                "contentId=" + contentId +
+                ", mainContent='" + mainContent + '\'' +
+                ", githubLink='" + githubLink + '\'' +
+                ", references='" + references + '\'' +
+                '}';
+    }
 }

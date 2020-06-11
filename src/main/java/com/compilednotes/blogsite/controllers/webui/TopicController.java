@@ -1,6 +1,8 @@
 package com.compilednotes.blogsite.controllers.webui;
 
+import com.compilednotes.blogsite.beans.CategoryBean;
 import com.compilednotes.blogsite.beans.TopicBean;
+import com.compilednotes.blogsite.service.CategoryService;
 import com.compilednotes.blogsite.service.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +14,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 
 @Controller("webTopicController")
 @RequestMapping("/webui/topics")
@@ -19,6 +25,10 @@ public class TopicController {
 
     @Autowired
     private TopicService topicService;
+
+    @Autowired
+    private CategoryService categoryService;
+
 
     @RequestMapping(value = "/")
     public String home() {
@@ -32,12 +42,13 @@ public class TopicController {
 
     @RequestMapping(value = "/addTopic", method = RequestMethod.POST)
     public String add(ModelMap model, @ModelAttribute("addTopic")TopicBean topicBean, BindingResult result) {
+        System.out.println("topicBean :" +topicBean);
         topicService.save(topicBean);
         model.put("topics", topicService.findAll());
         return "topic-display";
     }
 
-    @RequestMapping(value = "/getCategories", method = RequestMethod.GET)
+    @RequestMapping(value = "/getTopics", method = RequestMethod.GET)
     public String get(ModelMap model) {
         model.put("topics", topicService.findAll());
         return "topic-display";
@@ -46,12 +57,13 @@ public class TopicController {
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public String editById(@PathVariable("id") String id, Model model) {
         TopicBean topicBean = topicService.findById(Long.valueOf(id));
-        model.addAttribute("edit",topicBean);
+        model.addAttribute("editTopic",topicBean);
         return "topic-edit";
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public String edit(@ModelAttribute("editTopic") TopicBean topicBean, ModelMap model) {
+        System.out.println("topicBean : " +topicBean);
         topicService.update(topicBean);
         model.put("topics", topicService.findAll());
         return "topic-display";
@@ -71,4 +83,14 @@ public class TopicController {
         return "topic-display";
     }
 
+    @ModelAttribute("categories")
+    private Map<Long, String> getCategoryList() {
+        Map<Long,String> categoryMap = new HashMap<>();
+        List<CategoryBean> categoryBeans = categoryService.findAll();
+        for(CategoryBean categoryBean : categoryBeans){
+            categoryMap.put(categoryBean.getCategoryId(),categoryBean.getCategoryName());
+        }
+        return categoryMap;
+    }
 }
+

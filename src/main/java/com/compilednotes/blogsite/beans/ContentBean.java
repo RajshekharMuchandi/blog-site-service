@@ -41,4 +41,14 @@ public class ContentBean {
     public void setReferences(String references) {
         this.references = references;
     }
+
+    @Override
+    public String toString() {
+        return "ContentBean{" +
+                "contentId=" + contentId +
+                ", mainContent='" + mainContent + '\'' +
+                ", githubLink='" + githubLink + '\'' +
+                ", references='" + references + '\'' +
+                '}';
+    }
 }

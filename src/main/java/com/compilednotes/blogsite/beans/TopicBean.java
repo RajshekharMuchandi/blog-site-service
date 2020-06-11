@@ -41,4 +41,14 @@ public class TopicBean {
     public void setContentBean(ContentBean contentBean) {
         this.contentBean = contentBean;
     }
+
+    @Override
+    public String toString() {
+        return "TopicBean{" +
+                "topicId=" + topicId +
+                ", topicName='" + topicName + '\'' +
+                ", categoryBean=" + categoryBean +
+                ", contentBean=" + contentBean +
+                '}';
+    }
 }

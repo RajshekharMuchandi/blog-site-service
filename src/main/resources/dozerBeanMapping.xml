@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozer.sourceforge.net
+          http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+    <mapping>
+        <class-a>com.compilednotes.blogsite.beans.TopicBean</class-a>
+        <class-b>com.compilednotes.blogsite.entities.TopicEntity</class-b>
+        <field>
+            <a>categoryBean</a>
+            <b>categoryEntity</b>
+        </field>
+    </mapping>
+
+</mappings>

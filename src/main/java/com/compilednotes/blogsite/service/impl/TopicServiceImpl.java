@@ -7,10 +7,13 @@ import com.compilednotes.blogsite.repository.TopicRepository;
 import com.compilednotes.blogsite.service.TopicService;
 import com.compilednotes.blogsite.utils.DozerBeanSingleton;
 import org.dozer.DozerBeanMapper;
+import org.dozer.DozerBeanMapperSingletonWrapper;
+import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,12 +24,13 @@ public class TopicServiceImpl implements TopicService {
     @Autowired
     private TopicRepository topicRepository;
 
-    private DozerBeanMapper mapper = DozerBeanSingleton.getInstance();
+    private Mapper mapper = DozerBeanMapperSingletonWrapper.getInstance();;
     
     @Override
     public void save(TopicBean topicBean) {
         TopicEntity topicEntity = new TopicEntity();
         mapper.map(topicBean,topicEntity);
+        System.out.println("topicEntity :" +topicEntity);
         topicRepository.save(topicEntity);
     }
 

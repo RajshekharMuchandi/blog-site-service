@@ -56,4 +56,14 @@ public class TopicEntity {
     public void setCategoryEntity(CategoryEntity categoryEntity) {
         this.categoryEntity = categoryEntity;
     }
+
+    @Override
+    public String toString() {
+        return "TopicEntity{" +
+                "topicId=" + topicId +
+                ", topicName='" + topicName + '\'' +
+                ", categoryEntity=" + categoryEntity +
+                ", contentEntity=" + contentEntity +
+                '}';
+    }
 }
